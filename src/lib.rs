@@ -43,6 +43,12 @@ enum Symbol {
     Pln,
 }
 
+impl Default for Symbol {
+    fn default() -> Self {
+        Symbol::Usd
+    }
+}
+
 fn get_symbol(base_currency: Symbol) -> &'static str {
     match base_currency {
         Symbol::Cad => "CAD",
@@ -88,7 +94,7 @@ impl Currency {
     /// use fer::{Currency, Symbol};
     ///
     /// fn main() {
-    ///     let base = Currency::new(Symbol::Usd);
+    ///     let base = Currency::new(Symbol::Usd).unwrap();
     ///     assert_eq!("USD".to_string(), base.base);
     ///     assert_eq!(base.convert_from(Usd, 1), 1.0);
     /// }
@@ -103,11 +109,37 @@ impl Currency {
         Ok(resp)
     }
 
+    /// Convert the amount of base currency into your preferrd currency.
+    ///
+    /// # Example
+    ///
+    /// ```rust
+    /// use fer::{Currency, Symbol};
+    ///
+    /// fn main() {
+    ///     let base = Currency::new(Symbol::Usd).unwrap();
+    ///     println!("1000 USD in JPY: {}", base.convert_into(Symbol::Jpy, 1000_f64));
+    ///     println!("1_000_000 USD in JPY: {}", base.convert_into(Symbol::Jpy, 1_000_000_f64));
+    /// }
+    /// ```
     pub fn convert_into(&self, currency: Symbol, amount: f64) -> f64 {
         let currency_rate = self.rates.get(get_symbol(currency)).unwrap();
         currency_rate * amount
     }
 
+    /// Similarly, this will convert the amount of your preferred currency into base currency.
+    ///
+    /// # Example
+    ///
+    /// ```rust
+    /// use fer::{Currency, Symbol};
+    ///
+    /// fn main() {
+    ///     let base = Currency::new(Symbol::Usd).unwrap();
+    ///     println!("1000 JPY in USD: {}", base.convert_from(Symbol::Jpy, 1000_f64));
+    ///     println!("1_000_000 JPY in USD: {}", base.convert_from(Symbol::Jpy, 1_000_000_f64));
+    /// }
+    /// ```
     pub fn convert_from(&self, currency: Symbol, amount: f64) -> f64 {
         let base_rate = self.rates.get(&self.base).unwrap();
         let currency_rate = self.rates.get(get_symbol(currency)).unwrap();
