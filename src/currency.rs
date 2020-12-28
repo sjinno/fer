@@ -20,8 +20,7 @@ impl Currency {
     ///
     /// fn main() {
     ///     let base = Currency::new(Symbol::Usd).unwrap();
-    ///     assert_eq!("USD".to_string(), base.base);
-    ///     assert_eq!(base.convert_from(Usd, 1), 1.0);
+    ///     assert_eq!(base.convert_from(Symbol::Usd, 1_f64), 1.0);
     /// }
     /// ```
     #[tokio::main]

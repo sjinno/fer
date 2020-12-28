@@ -1,3 +1,4 @@
+#[derive(Copy, Clone)]
 pub enum Symbol {
     Cad,
     Hkd,
@@ -30,12 +31,6 @@ pub enum Symbol {
     Ils,
     Krw,
     Pln,
-}
-
-impl Default for Symbol {
-    fn default() -> Self {
-        Symbol::Usd
-    }
 }
 
 pub fn get_symbol(base_currency: Symbol) -> &'static str {
