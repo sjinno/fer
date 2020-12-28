@@ -11,69 +11,39 @@ pub struct Currency {
 
 /// List of three-letter symbols of major currencies.
 #[derive(Copy, Clone)]
+
 pub enum Symbol {
-    /// Canadian Dollar
-    Cad,
-    /// Hong Kong Dollar
-    Hkd,
-    /// Icelandic Krona
-    Isk,
-    /// Philippine Peso
-    Php,
-    /// Danish Krone
-    Dkk,
-    /// Hungarian Forint
-    Huf,
-    /// Czec Kouruna
-    Czk,
-    /// Great British Pound
-    Gbp,
-    /// Romanian New Leu
-    Ron,
-    /// Swedish Krona
-    Sek,
-    /// Indonesian Rupiah
-    Idr,
-    /// Brazillian Real
-    Brl,
-    /// Russian Ruble
-    Rub,
-    /// Croatian Kuna
-    Hrk,
-    /// Japanese Yen
-    Jpy,
-    /// Thai Baht
-    Thb,
-    /// Swiss Franc
-    Chf,
-    /// Euro
-    Eur,
-    /// Malaysian Ringgit
-    Myr,
-    /// Bulgaria Lev
-    Bgn,
-    /// Turkish Lira
-    Try,
-    /// Chinese Yuan
-    Cny,
-    /// Norwesian Krone
-    Nok,
-    /// New Zealand Dollar
-    Nzd,
-    /// South African Rand
-    Zar,
-    /// US Dollar
-    Usd,
-    /// Singapore Dollar
-    Sgd,
-    /// Australian Dollar
-    Aud,
-    /// Israeli Shekel
-    Ils,
-    /// South Korean Won
-    Krw,
-    /// Polish Złoty
-    Pln,
+    Cad, // Canadian Dollar
+    Hkd, // Hong Kong Dollar
+    Isk, // Icelandic Krona
+    Php, // Philippine Peso
+    Dkk, // Danish Krone
+    Huf, // Hungarian Forint
+    Czk, // Czec Kouruna
+    Gbp, // Great British Pound
+    Ron, // Romanian New Leu
+    Sek, // Swedish Krona
+    Idr, // Indonesian Rupiah
+    Brl, // Brazillian Real
+    Rub, // Russian Ruble
+    Hrk, // Croatian Kuna
+    Jpy, // Japanese Yen
+    Thb, // Thai Baht
+    Chf, // Swiss Franc
+    Eur, // Euro
+    Myr, // Malaysian Ringgit
+    Bgn, // Bulgaria Lev
+    Try, // Turkish Lira
+    Cny, // Chinese Yuan
+    Nok, // Norwesian Krone
+    Nzd, // New Zealand Dollar
+    Zar, // South African Rand
+    Usd, // US Dollar
+    Sgd, // Singapore Dollar
+    Aud, // Australian Dollar
+    Ils, // Israeli Shekel
+    Krw, // South Korean Won
+    Pln, // Polish Zloty
 }
 
 fn get_symbol(base_currency: Symbol) -> &'static str {
