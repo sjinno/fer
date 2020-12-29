@@ -11,7 +11,6 @@ pub struct Currency {
 
 /// List of three-letter symbols of major currencies.
 #[derive(Copy, Clone)]
-
 pub enum Symbol {
     Cad, // Canadian Dollar
     Hkd, // Hong Kong Dollar
@@ -46,8 +45,46 @@ pub enum Symbol {
     Pln, // Polish Zloty
 }
 
-fn get_symbol(base_currency: Symbol) -> &'static str {
-    match base_currency {
+fn match_symbol(currency: &str) -> Symbol {
+    let curr = currency.to_uppercase();
+    match curr.as_str() {
+        "CAD" => Symbol::Cad,
+        "HKD" => Symbol::Hkd,
+        "ISK" => Symbol::Isk,
+        "PHP" => Symbol::Php,
+        "DKK" => Symbol::Dkk,
+        "HUF" => Symbol::Huf,
+        "CZK" => Symbol::Czk,
+        "GBP" => Symbol::Gbp,
+        "RON" => Symbol::Ron,
+        "SEK" => Symbol::Sek,
+        "IDR" => Symbol::Idr,
+        "BRL" => Symbol::Brl,
+        "RUB" => Symbol::Rub,
+        "HRK" => Symbol::Hrk,
+        "JPY" => Symbol::Jpy,
+        "THB" => Symbol::Thb,
+        "CHF" => Symbol::Chf,
+        "EUR" => Symbol::Eur,
+        "MYR" => Symbol::Myr,
+        "BGN" => Symbol::Bgn,
+        "TRY" => Symbol::Try,
+        "CNY" => Symbol::Cny,
+        "NOK" => Symbol::Nok,
+        "NZD" => Symbol::Nzd,
+        "ZAR" => Symbol::Zar,
+        "USD" => Symbol::Usd,
+        "SGD" => Symbol::Sgd,
+        "AUD" => Symbol::Aud,
+        "ILS" => Symbol::Ils,
+        "KRW" => Symbol::Krw,
+        "PLN" => Symbol::Pln,
+        _ => Symbol::Eur, // Default
+    }
+}
+
+fn get_symbol(currency: Symbol) -> &'static str {
+    match currency {
         Symbol::Cad => "CAD",
         Symbol::Hkd => "HKD",
         Symbol::Isk => "ISK",
@@ -103,6 +140,11 @@ impl Currency {
         base_url.push_str(&format!("?base={}", base_currency));
         let resp = reqwest::get(&base_url).await?.json::<Self>().await?;
         Ok(resp)
+    }
+
+    pub fn new_from_str(base_currency: &str) -> Result<Self, Box<dyn std::error::Error>> {
+        let symbol = match_symbol(base_currency);
+        Currency::new(symbol)
     }
 
     /// Convert the amount of base currency into your preferrd currency.
