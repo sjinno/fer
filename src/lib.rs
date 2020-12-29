@@ -45,7 +45,9 @@ pub enum Symbol {
     Pln, // Polish Zloty
 }
 
-fn match_symbol(currency: &str) -> Symbol {
+/// Convert str into Symbol type.
+#[allow(dead_code)]
+pub fn match_symbol(currency: &str) -> Symbol {
     let curr = currency.to_uppercase();
     match curr.as_str() {
         "CAD" => Symbol::Cad,
@@ -142,24 +144,6 @@ impl Currency {
         Ok(resp)
     }
 
-    /// Create a new `Currency` instance.
-    /// Unlike the method `new()`, this will take the base_currency argument in str.
-    ///
-    /// # Example
-    ///
-    /// ```rust
-    /// use fer::{Currency, Symbol};
-    ///
-    /// fn main() {
-    ///     let base = Currency::new_from_str("Usd").unwrap();
-    ///     assert_eq!(base.convert_from(Symbol::Usd, 1_f64), 1.0);
-    /// }
-    /// ```
-    pub fn new_from_str(base_currency: &str) -> Result<Self, Box<dyn std::error::Error>> {
-        let symbol = match_symbol(base_currency);
-        Self::new(symbol)
-    }
-
     /// Convert the amount of base currency into your preferrd currency.
     ///
     /// # Example
@@ -176,25 +160,6 @@ impl Currency {
     pub fn convert_into(&self, currency: Symbol, amount: f64) -> f64 {
         let currency_rate = self.rates.get(get_symbol(currency)).unwrap();
         currency_rate * amount
-    }
-
-    /// Convert the amount of base currency into your preferrd currency.
-    /// Unlike the method `convert_into()`, this will take the currency argument in str.
-    ///
-    /// # Example
-    ///
-    /// ```rust
-    /// use fer::{Currency, Symbol};
-    ///
-    /// fn main() {
-    ///     let base = Currency::new_from_str("usd").unwrap();
-    ///     println!("1000 USD in JPY: {}", base.convert_into_from_str("jpy", 1000_f64));
-    ///     println!("1_000_000 USD in JPY: {}", base.convert_into_from_str("jpy", 1_000_000_f64));
-    /// }
-    /// ```
-    pub fn convert_into_from_str(&self, currency: &str, amount: f64) -> f64 {
-        let symbol = match_symbol(currency);
-        Self::convert_into(&self, symbol, amount)
     }
 
     /// Similarly, this will convert the amount of your preferred currency into base currency.
@@ -215,33 +180,15 @@ impl Currency {
         let currency_rate = self.rates.get(get_symbol(currency)).unwrap();
         base_rate / currency_rate * amount
     }
-
-    /// This will convert the amount of your preferred currency into base currency.
-    /// Unlike the method `convert_from()`, this will take the currency argument in str.
-    ///
-    /// # Example
-    ///
-    /// ```rust
-    /// use fer::{Currency, Symbol};
-    ///
-    /// fn main() {
-    ///     let base = Currency::new(Symbol::Usd).unwrap();
-    ///     println!("1000 JPY in USD: {}", base.convert_from_from_str("Jpy", 1000_f64));
-    ///     println!("1_000_000 JPY in USD: {}", base.convert_from_from_str("Jpy", 1_000_000_f64));
-    /// }
-    /// ```
-    pub fn convert_from_from_str(&self, currency: &str, amount: f64) -> f64 {
-        let symbol = match_symbol(currency);
-        Self::convert_from(&self, symbol, amount)
-    }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::{Currency, Symbol};
+    use super::{match_symbol, Currency, Symbol};
     #[test]
     fn test_lib() {
-        let base = Currency::new(Symbol::Usd).unwrap();
+        let usd = match_symbol("usd");
+        let base = Currency::new(usd).unwrap();
         assert_eq!("USD".to_string(), base.base);
         assert_eq!(base.convert_into(Symbol::Usd, 1.0), 1.0);
         assert_eq!(base.convert_from(Symbol::Usd, 1_000_000_f64), 1_000_000_f64);
