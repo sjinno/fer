@@ -121,6 +121,42 @@ fn get_symbol(currency: Symbol) -> &'static str {
     }
 }
 
+pub fn list_symbols() -> &'static str {
+    "
+    Cad, // Canadian Dollar
+    Hkd, // Hong Kong Dollar
+    Isk, // Icelandic Krona
+    Php, // Philippine Peso
+    Dkk, // Danish Krone
+    Huf, // Hungarian Forint
+    Czk, // Czec Kouruna
+    Gbp, // Great British Pound
+    Ron, // Romanian New Leu
+    Sek, // Swedish Krona
+    Idr, // Indonesian Rupiah
+    Brl, // Brazillian Real
+    Rub, // Russian Ruble
+    Hrk, // Croatian Kuna
+    Jpy, // Japanese Yen
+    Thb, // Thai Baht
+    Chf, // Swiss Franc
+    Eur, // Euro
+    Myr, // Malaysian Ringgit
+    Bgn, // Bulgaria Lev
+    Try, // Turkish Lira
+    Cny, // Chinese Yuan
+    Nok, // Norwesian Krone
+    Nzd, // New Zealand Dollar
+    Zar, // South African Rand
+    Usd, // US Dollar
+    Sgd, // Singapore Dollar
+    Aud, // Australian Dollar
+    Ils, // Israeli Shekel
+    Krw, // South Korean Won
+    Pln, // Polish Zloty
+    "
+}
+
 impl Currency {
     /// Create a new `Currency` instance.
     ///
