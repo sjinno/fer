@@ -122,39 +122,40 @@ fn get_symbol(currency: Symbol) -> &'static str {
 }
 
 pub fn list_symbols() -> &'static str {
-    "
-    Cad, // Canadian Dollar
-    Hkd, // Hong Kong Dollar
-    Isk, // Icelandic Krona
-    Php, // Philippine Peso
-    Dkk, // Danish Krone
-    Huf, // Hungarian Forint
-    Czk, // Czec Kouruna
-    Gbp, // Great British Pound
-    Ron, // Romanian New Leu
-    Sek, // Swedish Krona
-    Idr, // Indonesian Rupiah
-    Brl, // Brazillian Real
-    Rub, // Russian Ruble
-    Hrk, // Croatian Kuna
-    Jpy, // Japanese Yen
-    Thb, // Thai Baht
-    Chf, // Swiss Franc
-    Eur, // Euro
-    Myr, // Malaysian Ringgit
-    Bgn, // Bulgaria Lev
-    Try, // Turkish Lira
-    Cny, // Chinese Yuan
-    Nok, // Norwesian Krone
-    Nzd, // New Zealand Dollar
-    Zar, // South African Rand
-    Usd, // US Dollar
-    Sgd, // Singapore Dollar
-    Aud, // Australian Dollar
-    Ils, // Israeli Shekel
-    Krw, // South Korean Won
-    Pln, // Polish Zloty
-    "
+    r#"
+```
+CAD     Canadian Dollar
+HKD     Hong Kong Dollar
+ISK     Icelandic Krona
+PHP     Philippine Peso
+DKK     Danish Krone
+HUF     Hungarian Forint
+CZK     Czec Kouruna
+GBP     Great British Pound
+RON     Romanian New Leu
+SEK     Swedish Krona
+IDR     Indonesian Rupiah
+BRL     Brazillian Real
+RUB     Russian Ruble
+HRK     Croatian Kuna
+JPY     Japanese Yen
+THB     Thai Baht
+CHF     Swiss Franc
+EUR     Euro
+MYR     Malaysian Ringgit
+BGN     Bulgaria Lev
+TRY     Turkish Lira
+CNY     Chinese Yuan
+NOK     Norwesian Krone
+NZD     New Zealand Dollar
+ZAR     South African Rand
+USD     US Dollar
+SGD     Singapore Dollar
+AUD     Australian Dollar
+ILS     Israeli Shekel
+KRW     South Korean Won
+PLN     Polish Zloty
+```"#
 }
 
 impl Currency {
