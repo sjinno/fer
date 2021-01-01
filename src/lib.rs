@@ -124,37 +124,37 @@ fn get_symbol(currency: Symbol) -> &'static str {
 pub fn list_symbols() -> &'static str {
     r#"
 ```
-CAD     Canadian Dollar
-HKD     Hong Kong Dollar
-ISK     Icelandic Krona
-PHP     Philippine Peso
-DKK     Danish Krone
-HUF     Hungarian Forint
-CZK     Czec Kouruna
-GBP     Great British Pound
-RON     Romanian New Leu
-SEK     Swedish Krona
-IDR     Indonesian Rupiah
-BRL     Brazillian Real
-RUB     Russian Ruble
-HRK     Croatian Kuna
-JPY     Japanese Yen
-THB     Thai Baht
-CHF     Swiss Franc
-EUR     Euro
-MYR     Malaysian Ringgit
-BGN     Bulgaria Lev
-TRY     Turkish Lira
-CNY     Chinese Yuan
-NOK     Norwesian Krone
-NZD     New Zealand Dollar
-ZAR     South African Rand
-USD     US Dollar
-SGD     Singapore Dollar
-AUD     Australian Dollar
-ILS     Israeli Shekel
-KRW     South Korean Won
-PLN     Polish Zloty
+CAD  Canadian Dollar
+HKD  Hong Kong Dollar
+ISK  Icelandic Krona
+PHP  Philippine Peso
+DKK  Danish Krone
+HUF  Hungarian Forint
+CZK  Czec Kouruna
+GBP  Great British Pound
+RON  Romanian New Leu
+SEK  Swedish Krona
+IDR  Indonesian Rupiah
+BRL  Brazillian Real
+RUB  Russian Ruble
+HRK  Croatian Kuna
+JPY  Japanese Yen
+THB  Thai Baht
+CHF  Swiss Franc
+EUR  Euro
+MYR  Malaysian Ringgit
+BGN  Bulgaria Lev
+TRY  Turkish Lira
+CNY  Chinese Yuan
+NOK  Norwesian Krone
+NZD  New Zealand Dollar
+ZAR  South African Rand
+USD  US Dollar
+SGD  Singapore Dollar
+AUD  Australian Dollar
+ILS  Israeli Shekel
+KRW  South Korean Won
+PLN  Polish Zloty
 ```"#
 }
 
